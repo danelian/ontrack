@@ -44,6 +44,10 @@ export function isNumberOrNull(value) {
   return isNumber(value) || isNull(value)
 }
 
+export function isUndefined(value) {
+  return value == undefined
+}
+
 function isSelectOptionValid({ value, label }) {
   return isNumber(value) && isNotEmptyString(label)
 }
@@ -56,9 +60,6 @@ function isNumber(value) {
 }
 function isString(value) {
   return typeof value == 'string'
-}
-function isUndefined(value) {
-  return value == undefined
 }
 function isNull(value) {
   return value == null
