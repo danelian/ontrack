@@ -20,7 +20,7 @@ async function submit() {
   //   window.scrollTo(0, document.body.scrollHeight)
   // })
 
-  await newsTick()
+  await nextTick()
 
   window.scrollTo(0, document.body.scrollHeight)
 }
