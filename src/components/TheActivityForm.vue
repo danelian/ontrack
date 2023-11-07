@@ -1,6 +1,7 @@
 <script setup>
 import { nextTick, ref } from 'vue'
 import { PlusIcon } from '@heroicons/vue/24/outline';
+import { id } from '../functions'
 import { isActivityValid } from '../validators'
 import BaseButton from './BaseButton.vue'
 
@@ -8,12 +9,16 @@ const emit = defineEmits({
   submit: isActivityValid
 })
 
-const activity = ref('')
+const name = ref('')
 
 async function submit() {
-  emit('submit', activity.value)
+  emit('submit', {
+    id: id(),
+    name: name.value,
+    secondsToComplete: 0
+  })
   // очищаю поле ввода после отправки
-  activity.value = ''
+  name.value = ''
   // инструкция по прокрутке страницы вниз,
   // к созданному элементу
   // nextTick().then(() => {
@@ -33,11 +38,11 @@ async function submit() {
   >
     <input
       type="text"
-      v-model="activity"
+      v-model="name"
       class="w-full rounded border px-4 text-xl"
       placeholder="Activity name"
     />
-    <BaseButton :disabled="activity.trim() == ''">
+    <BaseButton :disabled="name.trim() == ''">
       <PlusIcon class="h-8" />
     </BaseButton>
   </form>
