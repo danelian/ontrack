@@ -30,7 +30,11 @@ function createActivity(activity) {
 }
 
 function deleteActivity(activity) {
-  activities.value.splice(activities.value.indexOf(activity), 1)
+  timelineItems.forEach((timelineItem) => {
+    if (timelineItem.activityId == activity.id) {
+      timelineItem.activityId = null
+    }
+  })
 }
 
 function setTimelineItemActivity({ timelineItem, activity }) {
