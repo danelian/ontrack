@@ -1,5 +1,5 @@
 <script setup>
-import { validateTimelineItems, validateSelectOptions, validateActivities, isTimelineItemValid, isActivityValid, isNull } from '../validators'
+import { validateTimelineItems, validateSelectOptions, validateActivities, isTimelineItemValid, isActivityValid } from '../validators'
 import TimelineItem from '../components/TimelineItem.vue'
 
 defineProps({
@@ -21,10 +21,9 @@ defineProps({
 })
 
 const emit = defineEmits({
-  setTimelineItemActivity({ timelineItem, activity }) {
+  setTimelineItemActivity(timelineItem, activity) {
     return [
-      isTimelineItemValid(timelineItem),
-      isNull(activity) || isActivityValid(activity)
+      isTimelineItemValid(timelineItem), isActivityValid(activity)
     ].every(Boolean)
   }
 })
@@ -39,7 +38,7 @@ const emit = defineEmits({
         :timeline-item="timelineItem"
         :activities="activities"
         :activity-select-options="activitySelectOptions"
-        @select-activity="emit('setTimelineItemActivity', { timelineItem, activity: $event })"
+        @select-activity="emit('setTimelineItemActivity', timelineItem, $event)"
       />
     </ul>
   </div>
