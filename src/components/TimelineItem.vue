@@ -31,7 +31,6 @@ const props = defineProps({
 })
 
 const emit = defineEmits({
-  updateActivitySeconds: isNumber,
   selectActivity: isActivityValid,
   scrollToHour: isHourValid
 })
@@ -58,9 +57,7 @@ function findActivityById(id) {
       @select="selectActivity"
     />
     <TimelineStopwatch 
-      :seconds="timelineItem.activitySeconds" 
-      :hour="timelineItem.hour" 
-      @update-seconds="emit('updateActivitySeconds', $event)"
+      :timeline-item="timelineItem"
     />
   </li>
 </template>
