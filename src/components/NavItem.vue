@@ -1,30 +1,30 @@
 <script setup>
 import { computed } from 'vue'
-import { isPageValid } from '../validators'
+import { isNavItemValid } from '../validators'
 import { currentPage, navigate } from '../router'
 
 const props = defineProps({
-  page: {
+  navItem: {
     required: true,
-    type: String,
-    validator: isPageValid
+    type: Object,
+    validator: isNavItemValid
   }
 })
 
 const classes = computed(() => [
   'flex flex-col items-center p-2 text-xs capitalize text-center',
-  { 'bg-gray-200 pointer-events-none': props.page == currentPage.value }
+  { 'bg-gray-200 pointer-events-none': props.navItem.page == currentPage.value }
 ])
 </script>
 
 <template>
   <li class="flex-1">
     <a
-      :href="`#${page}`"
+      :href="`#${navItem.page}`"
       :class="classes"
-      @click="navigate(page)"
+      @click="navigate(navItem.page)"
     >
-      <slot />
+      <component :is="navItem.icon" class="w-6 h-6" /> {{ navItem.page }}
     </a>
   </li>
 </template>

@@ -7,11 +7,10 @@ import NavItem from './NavItem.vue'
   <nav class="sticky bottom-0 z-10 bg-white">
     <ul class="flex items-center justify-around border-t">
       <NavItem
-        v-for="(icon, page) in NAV_ITEMS"
-        :key="page"
-        :page="page"
+        v-for="navItem in NAV_ITEMS"
+        :key="navItem.page"
+        :nav-item="navItem"
       >
-        <component :is="icon" class="w-6 h-6" /> {{ page }}
       </NavItem>
     </ul>
   </nav>
