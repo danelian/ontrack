@@ -8,11 +8,9 @@ import {
   setActivitySecondsToComplete,
   activitySelectOptions,
   createActivity,
-  deleteActivity,
-  activities
+  deleteActivity
 } from './activities'
-import { 
-  timelineItems,
+import {
   setTimelineItemActivity,
   updateTimelineItemActivitySeconds,
   resetTimelineItemActivities
@@ -34,7 +32,6 @@ provide(keys.deleteActivityKey, (activity) => {
 })
 provide(keys.activitySelectOptionsKey, readonly(activitySelectOptions))
 provide(keys.periodSelectOptionsKey, readonly(generatePeriodSelectOptions()))
-provide(keys.timelineItemsKey, readonly(timelineItems))
 </script>
 
 <template>
@@ -43,12 +40,10 @@ provide(keys.timelineItemsKey, readonly(timelineItems))
   <main class="flex flex-col flex-grow">
     <TheTimeline
       v-show="currentPage == PAGE_TIMELINE"
-      :timeline-items="timelineItems"
       ref="timelineRef"
     />
     <TheActivities
       v-show="currentPage == PAGE_ACTIVITIES"
-      :activities="activities"
     />
     <TheProgress v-show="currentPage == PAGE_PROGRESS" />
   </main>
