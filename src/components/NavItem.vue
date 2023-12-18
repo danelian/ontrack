@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { isNavItemValid } from '../validators'
 import { currentPage, navigate } from '../router'
+import BaseIcon from './BaseIcon.vue'
 
 const props = defineProps({
   navItem: {
@@ -24,7 +25,7 @@ const classes = computed(() => [
       :class="classes"
       @click="navigate(navItem.page)"
     >
-      <component :is="navItem.icon" class="w-6 h-6" /> {{ navItem.page }}
+      <BaseIcon :name="navItem.icon" class="w-6 h-6" /> {{ navItem.page }}
     </a>
   </li>
 </template>
