@@ -1,6 +1,10 @@
 import { MILLISECONDS_IN_SECOND, SECONDS_IN_MINUTE, MINUTES_IN_HOUR, HOURS_IN_DAY, SECONDS_IN_HOUR } from './constants'
 import { isNull } from './validators'
 
+export function currentHour() {
+  return new Date().getHours()
+}
+
 export function formatSeconds(seconds) {
   const date = new Date()
 

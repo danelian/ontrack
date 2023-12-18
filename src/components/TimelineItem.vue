@@ -2,7 +2,7 @@
 import { inject } from 'vue'
 import {
   isTimelineItemValid,
-  isHourValid
+  isUndefined
 } from '../validators'
 import {
   setTimelineItemActivityKey,
@@ -21,7 +21,7 @@ defineProps({
 })
 
 const emit = defineEmits({
-  scrollToHour: isHourValid
+  scrollToHour: isUndefined
 })
 
 const setTimelineItemActivity = inject(setTimelineItemActivityKey)
@@ -32,7 +32,7 @@ const activitySelectOptions = inject(activitySelectOptionsKey)
   <li class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
     <TimelineHour
       :hour="timelineItem.hour"
-      @click.prevent="emit('scrollToHour', timelineItem.hour)"
+      @click.prevent="emit('scrollToHour')"
     />
     <BaseSelect
       placeholder="Rest"
