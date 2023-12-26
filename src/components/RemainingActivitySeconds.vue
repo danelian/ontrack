@@ -26,4 +26,4 @@ const remainingSeconds = computed(() =>
   <div :class="classes">
     {{ formatSecondsWithSign(remainingSeconds) }}
   </div>
-</template>
+</template>``
