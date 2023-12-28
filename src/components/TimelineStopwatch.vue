@@ -1,5 +1,5 @@
 <script setup>
-import { watchEffect } from 'vue'
+import { onMounted, watch, watchEffect } from 'vue'
 import {
   BUTTON_TYPE_SUCCESS,
   BUTTON_TYPE_WARNING,
@@ -26,6 +26,12 @@ const { seconds, isRunning, start, stop, reset } = useStopwatch(
   props.timelineItem.activitySeconds
 )
 
+onMounted(() => {
+  if (props.timelineItem.isActive) {
+    start()
+  }
+})
+
 watchEffect(() => {
   if (props.timelineItem.hour !== now.value.getHours() && isRunning.value) {
     stop()
@@ -35,6 +41,12 @@ watchEffect(() => {
 watchEffect(() => 
   updateTimelineItem(props.timelineItem, { 
     activitySeconds: seconds.value
+  })
+)
+
+watch(isRunning, () =>
+  updateTimelineItem(props.timelineItem, { 
+    isActive: Boolean(isRunning.value)
   })
 )
 </script>
