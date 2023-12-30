@@ -16,8 +16,8 @@ const props = defineProps({
   options: {
     required: true,
     type: Array,
-    validator: validateSelectOptions,
-  },
+    validator: validateSelectOptions
+  }
 })
 
 const emit = defineEmits({
@@ -36,9 +36,9 @@ function select(value) {
     <BaseButton :type="BUTTON_TYPE_NEUTRAL" @click="select(null)">
       <BaseIcon :name="ICON_XMARK" />
     </BaseButton>
-    <select 
+    <select
       class="w-full truncate rounded bg-gray-100 py-1 px-2 text-2xl"
-      @change="select($event.target.value)"  
+      @change="select($event.target.value)"
     >
       <option :selected="isNotSelected" disabled value="">{{ placeholder }}</option>
       <option

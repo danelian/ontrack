@@ -1,13 +1,12 @@
 import { ref, computed } from 'vue'
 import { HOURS_IN_DAY, MIDNIGHT_HOUR } from './constants'
 import { isToday, today, endOfHour, toSeconds } from './time'
-import { now } from './time'
 
 export const timelineItemRefs = ref([])
 
 export const timelineItems = ref([])
 
-export const activeTimelineItem = computed(() => 
+export const activeTimelineItem = computed(() =>
   timelineItems.value.find(({ isActive }) => isActive)
 )
 
@@ -28,20 +27,22 @@ export function updateTimelineItem(timelineItem, fields) {
 }
 
 export function resetTimelineItemActivities(timelineItems, activity) {
-  filterTimelineItemsByActivity(timelineItems, activity).forEach((timelineItem) => updateTimelineItem(timelineItem, {
+  filterTimelineItemsByActivity(timelineItems, activity).forEach((timelineItem) =>
+    updateTimelineItem(timelineItem, {
       activityId: null,
-      activitySeconds: timelineItem.hour === now.value.getHours() ? timelineItem.activitySeconds : 0
-  }))
+      activitySeconds: timelineItem.hour === today().getHours() ? timelineItem.activitySeconds : 0
+    })
+  )
 }
 
 export function calculateTrackedActivitySeconds(timelineItems, activity) {
   return filterTimelineItemsByActivity(timelineItems, activity)
-  .map(({ activitySeconds }) => activitySeconds)
-  .reduce((total, seconds) => Math.round(total + seconds), 0)
+    .map(({ activitySeconds }) => activitySeconds)
+    .reduce((total, seconds) => Math.round(total + seconds), 0)
 }
 
 export function scrollToCurrentHour(isSmooth = false) {
-  scrollToHour(now.value.getHours(), isSmooth)
+  scrollToHour(today().getHours(), isSmooth)
 }
 
 export function scrollToHour(hour, isSmooth = true) {
@@ -51,10 +52,10 @@ export function scrollToHour(hour, isSmooth = true) {
 }
 
 function resetTimelineItems() {
-  timelineItems.value.forEach((timelineItem) => 
+  timelineItems.value.forEach((timelineItem) =>
     updateTimelineItem(timelineItem, {
       activitySeconds: 0,
-      isActive: false 
+      isActive: false
     })
   )
 }

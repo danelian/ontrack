@@ -14,7 +14,7 @@ defineProps({
     required: true,
     type: Object,
     validator: isActivityValid
-  },
+  }
 })
 
 function deleteAndResetActivity(activity) {
@@ -39,10 +39,7 @@ function deleteAndResetActivity(activity) {
         :selected="activity.secondsToComplete || null"
         @select="updateActivity(activity, { secondsToComplete: $event || 0 })"
       />
-      <RemainingActivitySeconds 
-        v-if="activity.secondsToComplete" 
-        :activity="activity" 
-      />
+      <RemainingActivitySeconds v-if="activity.secondsToComplete" :activity="activity" />
     </div>
   </li>
 </template>

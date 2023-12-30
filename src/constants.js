@@ -19,7 +19,7 @@ export const NAV_ITEMS = [
   {
     page: PAGE_PROGRESS,
     icon: ICON_CHART_BAR
-  },
+  }
 ]
 
 export const BUTTON_TYPE_PRIMARY = 'primary'
@@ -33,7 +33,7 @@ export const BUTTON_TYPES = [
   BUTTON_TYPE_SUCCESS,
   BUTTON_TYPE_WARNING,
   BUTTON_TYPE_NEUTRAL,
-  BUTTON_TYPE_DANGER,
+  BUTTON_TYPE_DANGER
 ]
 
 export const MILLISECONDS_IN_SECOND = 1000

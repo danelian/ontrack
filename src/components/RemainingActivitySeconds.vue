@@ -9,7 +9,7 @@ const props = defineProps({
     required: true,
     type: Object,
     validator: isActivityValid
-  },
+  }
 })
 
 const classes = computed(() => [
@@ -17,8 +17,10 @@ const classes = computed(() => [
   remainingSeconds.value < 0 ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'
 ])
 
-const remainingSeconds = computed(() => 
-  calculateTrackedActivitySeconds(timelineItems.value, props.activity) - props.activity.secondsToComplete
+const remainingSeconds = computed(
+  () =>
+    calculateTrackedActivitySeconds(timelineItems.value, props.activity) -
+    props.activity.secondsToComplete
 )
 </script>
 
@@ -26,4 +28,5 @@ const remainingSeconds = computed(() =>
   <div :class="classes">
     {{ formatSecondsWithSign(remainingSeconds) }}
   </div>
-</template>``
+</template>
+``

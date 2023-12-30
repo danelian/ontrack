@@ -26,7 +26,7 @@ function loadFromLocalStorage() {
 
 function saveState() {
   localStorage.setItem(
-    APP_NAME, 
+    APP_NAME,
     JSON.stringify({
       timelineItems: timelineItems.value,
       activities: activities.value,

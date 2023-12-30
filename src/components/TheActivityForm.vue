@@ -23,10 +23,7 @@ async function submit() {
 </script>
 
 <template>
-  <form
-    @submit.prevent="submit"
-    class="sticky bottom-[57px] flex gap-2 border-t bg-white p-4"
-  >
+  <form @submit.prevent="submit" class="sticky bottom-[57px] flex gap-2 border-t bg-white p-4">
     <input
       type="text"
       v-model="name"

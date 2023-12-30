@@ -16,7 +16,7 @@ function getTimelineHeight() {
 
 <template>
   <hr
-    ref="indicatorRef" 
+    ref="indicatorRef"
     class="pointer-events-none absolute z-10 w-full border-b-2 border-red-600"
     :style="{ top: `${topOffset}px` }"
   />

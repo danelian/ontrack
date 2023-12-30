@@ -20,17 +20,15 @@ const classes = computed(() => [
 ])
 
 function handleClick() {
-  currentPage.value === PAGE_TIMELINE && props.navItem.page === PAGE_TIMELINE ? scrollToCurrentHour(true) : navigate(props.navItem.page)
+  currentPage.value === PAGE_TIMELINE && props.navItem.page === PAGE_TIMELINE
+    ? scrollToCurrentHour(true)
+    : navigate(props.navItem.page)
 }
 </script>
 
 <template>
   <li class="flex-1">
-    <a
-      :href="`#${navItem.page}`"
-      :class="classes"
-      @click="handleClick"
-    >
+    <a :href="`#${navItem.page}`" :class="classes" @click="handleClick">
       <BaseIcon :name="navItem.icon" class="w-6 h-6" /> {{ navItem.page }}
     </a>
   </li>
